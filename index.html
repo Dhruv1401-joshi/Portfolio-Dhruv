@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dhruv — Full-Stack Developer &amp; Business Automation, Bhavnagar</title>
+<meta name="description" content="Dhruv builds websites, payments and automation for growing businesses. Diploma CS student, 2+ internships, 2+ client projects delivered, hackathon builder.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#141a23;
+    --ink-2:#1b2330;
+    --paper:#f1e9d8;
+    --paper-2:#e8dec7;
+    --gold:#c9a227;
+    --gold-dim:#8f7420;
+    --rust:#a34a3d;
+    --teal:#3f6e64;
+    --muted:#8d95a6;
+    --line: rgba(241,233,216,0.10);
+
+    --display: 'Fraunces', serif;
+    --body: 'IBM Plex Sans', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+
+    --margin: 64px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:
+      repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 37px,
+        var(--line) 38px
+      ),
+      var(--ink);
+    color:var(--paper);
+    font-family:var(--body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+
+  ::selection{ background:var(--gold); color:var(--ink); }
+
+  .rule{
+    position:fixed;
+    top:0; bottom:0;
+    left:var(--margin);
+    width:2px;
+    background:linear-gradient(to bottom, transparent, var(--rust) 8%, var(--rust) 92%, transparent);
+    opacity:0.55;
+    z-index:1;
+    pointer-events:none;
+  }
+  @media (max-width: 700px){ .rule{ left:24px; } }
+
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding: 0 40px 0 calc(var(--margin) + 40px);
+    position:relative;
+    z-index:2;
+  }
+  @media (max-width: 700px){
+    .wrap{ padding: 0 24px 0 56px; }
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(20,26,35,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:76px;
+  }
+  .brand{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:1.35rem;
+    letter-spacing:0.02em;
+    color:var(--paper);
+  }
+  .brand span{ color:var(--gold); }
+  .navlinks{ display:flex; gap:34px; align-items:center; }
+  .navlinks a{
+    font-family:var(--mono);
+    font-size:0.78rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--muted);
+    transition:color 0.2s ease;
+    position:relative;
+  }
+  .navlinks a:hover{ color:var(--gold); }
+  .navlinks a.cta{
+    color:var(--ink);
+    background:var(--gold);
+    padding:9px 16px;
+    border-radius:2px;
+  }
+  .navlinks a.cta:hover{ background:#ddb531; color:var(--ink); }
+  .navtoggle{ display:none; background:none; border:1px solid var(--line); color:var(--paper); width:40px; height:40px; font-family:var(--mono); }
+
+  @media (max-width: 760px){
+    .navlinks{
+      position:fixed; top:76px; left:0; right:0;
+      background:var(--ink-2);
+      flex-direction:column;
+      align-items:flex-start;
+      padding:22px 24px 30px;
+      border-bottom:1px solid var(--line);
+      display:none;
+      gap:20px;
+    }
+    .navlinks.open{ display:flex; }
+    .navtoggle{ display:block; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{ padding:110px 0 90px; position:relative; }
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:0.78rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--gold);
+    display:flex; align-items:center; gap:10px;
+    margin-bottom:26px;
+  }
+  .eyebrow::before{
+    content:"§ No. 001";
+    color:var(--muted);
+  }
+  h1.name{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:clamp(3rem, 9vw, 5.6rem);
+    line-height:0.98;
+    letter-spacing:-0.01em;
+    color:var(--paper);
+  }
+  h1.name em{
+    font-style:italic;
+    color:var(--gold);
+    font-weight:500;
+  }
+  .role-line{
+    font-family:var(--mono);
+    font-size:clamp(0.95rem, 2vw, 1.15rem);
+    color:var(--muted);
+    margin-top:22px;
+    max-width:640px;
+    border-left:2px solid var(--rust);
+    padding-left:16px;
+  }
+  .hero-desc{
+    margin-top:28px;
+    max-width:560px;
+    font-size:1.05rem;
+    color:#d3cebd;
+  }
+  .hero-actions{ margin-top:40px; display:flex; gap:16px; flex-wrap:wrap; }
+  .btn{
+    font-family:var(--mono);
+    font-size:0.82rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    padding:14px 26px;
+    border-radius:2px;
+    display:inline-block;
+    transition:all 0.2s ease;
+  }
+  .btn-primary{ background:var(--gold); color:var(--ink); }
+  .btn-primary:hover{ background:#e0b93a; transform:translateY(-1px); }
+  .btn-ghost{ border:1px solid var(--line); color:var(--paper); }
+  .btn-ghost:hover{ border-color:var(--gold); color:var(--gold); }
+
+  /* stamped badge */
+  .stamp{
+    font-family:var(--mono);
+    font-size:0.72rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    border:1.5px solid currentColor;
+    border-radius:3px;
+    padding:4px 10px;
+    display:inline-block;
+    transform:rotate(-4deg);
+    position:relative;
+  }
+  .stamp.live{ color:var(--teal); }
+  .stamp.delivered{ color:var(--rust); }
+
+  /* ---------- TALLY / STATS ---------- */
+  .tally{
+    margin-top:70px;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .tally-item{
+    padding:26px 18px 26px 0;
+    border-right:1px solid var(--line);
+  }
+  .tally-item:last-child{ border-right:none; }
+  .tally-num{
+    font-family:var(--display);
+    font-size:2.6rem;
+    color:var(--gold);
+    font-weight:600;
+    line-height:1;
+  }
+  .tally-label{
+    font-family:var(--mono);
+    font-size:0.72rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-top:8px;
+  }
+  @media (max-width:600px){
+    .tally{ grid-template-columns:1fr; }
+    .tally-item{ border-right:none; border-bottom:1px solid var(--line); padding:20px 0;}
+    .tally-item:last-child{ border-bottom:none; }
+  }
+
+  /* ---------- SECTION SHARED ---------- */
+  section{ padding:90px 0; border-top:1px solid var(--line); }
+  .sec-head{ margin-bottom:54px; }
+  .sec-no{
+    font-family:var(--mono);
+    font-size:0.78rem;
+    color:var(--rust);
+    letter-spacing:0.1em;
+  }
+  h2.sec-title{
+    font-family:var(--display);
+    font-size:clamp(2rem, 4vw, 2.7rem);
+    font-weight:600;
+    margin-top:8px;
+    color:var(--paper);
+  }
+  .sec-sub{
+    font-family:var(--body);
+    color:var(--muted);
+    max-width:560px;
+    margin-top:14px;
+    font-size:1rem;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:60px;
+    align-items:start;
+  }
+  .about-grid p{ color:#d3cebd; margin-bottom:18px; font-size:1.02rem; }
+  .about-grid p strong{ color:var(--paper); }
+  .ledger-note{
+    background:var(--paper);
+    color:var(--ink);
+    padding:28px 26px;
+    border-radius:3px;
+    position:relative;
+  }
+  .ledger-note::before{
+    content:"";
+    position:absolute; left:22px; top:0; bottom:0; width:1px;
+    background:var(--rust); opacity:0.4;
+  }
+  .ledger-note h3{
+    font-family:var(--mono);
+    font-size:0.78rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--rust);
+    margin-bottom:16px;
+  }
+  .ledger-note ul{ list-style:none; }
+  .ledger-note li{
+    font-family:var(--body);
+    font-size:0.94rem;
+    padding:9px 0 9px 22px;
+    border-bottom:1px dashed rgba(20,26,35,0.18);
+    position:relative;
+  }
+  .ledger-note li:last-child{ border-bottom:none; }
+  .ledger-note li::before{
+    content:"—";
+    position:absolute; left:0; color:var(--rust);
+  }
+
+  @media (max-width:800px){ .about-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- SERVICES ---------- */
+  .services{ display:flex; flex-direction:column; }
+  .service-row{
+    display:grid;
+    grid-template-columns:70px 1.3fr 1.7fr;
+    gap:24px;
+    padding:26px 0;
+    border-bottom:1px solid var(--line);
+    align-items:baseline;
+  }
+  .service-row:first-of-type{ border-top:1px solid var(--line); }
+  .service-no{ font-family:var(--mono); color:var(--rust); font-size:0.9rem; }
+  .service-name{
+    font-family:var(--display);
+    font-size:1.35rem;
+    color:var(--paper);
+    font-weight:500;
+  }
+  .service-desc{ color:var(--muted); font-size:0.94rem; }
+  @media (max-width:700px){
+    .service-row{ grid-template-columns:40px 1fr; }
+    .service-desc{ grid-column:1/-1; padding-left:0; }
+  }
+
+  /* ---------- WORK / LEDGER ENTRIES ---------- */
+  .entries{ display:flex; flex-direction:column; gap:22px; }
+  .entry{
+    background:var(--paper);
+    color:var(--ink);
+    border-radius:3px;
+    padding:30px 32px;
+    position:relative;
+    overflow:hidden;
+  }
+  .entry::before{
+    content:"";
+    position:absolute; left:26px; top:0; bottom:0; width:1px;
+    background:var(--rust); opacity:0.35;
+  }
+  .entry-top{
+    display:flex; justify-content:space-between; align-items:flex-start; gap:16px;
+    flex-wrap:wrap;
+    margin-left:20px;
+  }
+  .entry-id{ font-family:var(--mono); font-size:0.75rem; color:var(--rust); letter-spacing:0.06em; }
+  .entry-title{
+    font-family:var(--display);
+    font-size:1.55rem;
+    font-weight:600;
+    margin-top:6px;
+    color:var(--ink);
+  }
+  .entry-kind{
+    font-family:var(--mono);
+    font-size:0.78rem;
+    color:var(--gold-dim);
+    margin-top:4px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+  }
+  .entry-desc{
+    margin-left:20px;
+    margin-top:14px;
+    font-size:0.96rem;
+    color:#3c3626;
+    max-width:640px;
+  }
+  .entry-tags{
+    margin-left:20px;
+    margin-top:16px;
+    display:flex; flex-wrap:wrap; gap:8px;
+  }
+  .tag{
+    font-family:var(--mono);
+    font-size:0.7rem;
+    letter-spacing:0.03em;
+    background:rgba(63,110,100,0.12);
+    color:var(--teal);
+    border:1px solid rgba(63,110,100,0.3);
+    padding:4px 9px;
+    border-radius:2px;
+    text-transform:uppercase;
+  }
+
+  /* ---------- HACKATHON FEATURE ---------- */
+  .hack{
+    border:1px solid var(--gold-dim);
+    border-radius:4px;
+    padding:44px;
+    background:linear-gradient(155deg, rgba(201,162,39,0.06), transparent 60%);
+    position:relative;
+  }
+  .hack-eyebrow{
+    font-family:var(--mono); font-size:0.75rem; color:var(--gold);
+    letter-spacing:0.1em; text-transform:uppercase; margin-bottom:14px;
+  }
+  .hack h3{
+    font-family:var(--display); font-size:2rem; font-weight:600; color:var(--paper);
+  }
+  .hack p{ color:#d3cebd; margin-top:16px; max-width:640px; font-size:1rem; }
+  .hack-tags{ margin-top:22px; display:flex; gap:8px; flex-wrap:wrap; }
+  .hack-tags .tag{ background:rgba(201,162,39,0.1); color:var(--gold); border-color:rgba(201,162,39,0.3); }
+
+  /* ---------- SKILLS ---------- */
+  .skill-groups{ display:grid; grid-template-columns:repeat(3,1fr); gap:34px; }
+  .skill-group h4{
+    font-family:var(--mono); font-size:0.75rem; text-transform:uppercase;
+    letter-spacing:0.08em; color:var(--rust); margin-bottom:16px;
+  }
+  .skill-group .tags{ display:flex; flex-wrap:wrap; gap:8px; }
+  .skill-group .tag{ background:rgba(201,162,39,0.08); color:var(--gold); border-color:rgba(201,162,39,0.25); }
+  @media (max-width:700px){ .skill-groups{ grid-template-columns:1fr; } }
+
+  /* ---------- CONTACT ---------- */
+  .contact-inner{
+    display:grid; grid-template-columns:1.2fr 0.8fr; gap:60px;
+  }
+  .contact-inner h2.sec-title{ margin-top:8px; }
+  .contact-list{ margin-top:30px; display:flex; flex-direction:column; gap:0; }
+  .contact-row{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:18px 0; border-bottom:1px solid var(--line);
+    font-family:var(--mono); font-size:0.95rem;
+  }
+  .contact-row span:first-child{ color:var(--muted); text-transform:uppercase; font-size:0.72rem; letter-spacing:0.08em; }
+  .contact-row a{ color:var(--paper); transition:color 0.2s; }
+  .contact-row a:hover{ color:var(--gold); }
+  .sign-box{
+    background:var(--paper); color:var(--ink); padding:30px; border-radius:3px;
+  }
+  .sign-box h4{ font-family:var(--mono); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--rust); margin-bottom:14px;}
+  .sign-box p{ font-size:0.92rem; color:#3c3626; margin-bottom:18px; }
+  @media (max-width:800px){ .contact-inner{ grid-template-columns:1fr; } }
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:36px 0 60px;
+  }
+  .foot-row{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;
+    font-family:var(--mono); font-size:0.75rem; color:var(--muted);
+  }
+
+  /* reveal on scroll */
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+
+<div class="rule"></div>
+
+<header>
+  <nav class="wrap">
+    <div class="brand">Dhruv<span>.</span></div>
+    <button class="navtoggle" id="navToggle" aria-label="Toggle menu">☰</button>
+    <div class="navlinks" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact" class="cta">Start a project</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero wrap" style="border-top:none;">
+    <div class="eyebrow">Bhavnagar, Gujarat</div>
+    <h1 class="name">Dhruv <em>builds</em><br>businesses their<br>next website.</h1>
+    <p class="role-line">FULL-STACK DEVELOPER · WEBSITE &amp; PAYMENTS · AUTOMATION FOR GROWING BUSINESSES</p>
+    <p class="hero-desc">
+      Diploma computer science student and freelance developer. I design and ship complete
+      websites — storefronts, dashboards, booking systems, payment flows — and automate the
+      manual work behind them, so small and growing businesses run on software instead of spreadsheets.
+    </p>
+    <div class="hero-actions">
+      <a href="#work" class="btn btn-primary">See the work</a>
+      <a href="#contact" class="btn btn-ghost">Talk about your project</a>
+    </div>
+
+    <div class="tally reveal">
+      <div class="tally-item">
+        <div class="tally-num">2+</div>
+        <div class="tally-label">Internships completed</div>
+      </div>
+      <div class="tally-item">
+        <div class="tally-num">2+</div>
+        <div class="tally-label">Clients delivered for</div>
+      </div>
+      <div class="tally-item">
+        <div class="tally-num">1</div>
+        <div class="tally-label">Hackathon shipped</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-no">§ No. 002</div>
+        <h2 class="sec-title">About</h2>
+      </div>
+      <div class="about-grid reveal">
+        <div>
+          <p>I'm a second-year <strong>Diploma in Computer Science</strong> student, self-taught from the ground up — I started with plain HTML and CSS and worked my way to full production stacks. Somewhere along the way, client work stopped being practice and became the main event.</p>
+          <p>I run as an independent freelancer, taking projects end to end: design, frontend, backend, payments, and the admin tools an owner actually needs to run the business day to day.  That means I design for people checking orders between customers, not for engineers.</p>
+          <p>Alongside client work, I go deeper on fundamentals — data structures, backend architecture, and web security — so what I ship holds up, not just looks good on day one.</p>
+        </div>
+        <div class="ledger-note">
+          <h3>Currently</h3>
+          <ul>
+            <li>Taking on new freelance website &amp; automation projects</li>
+            <li>Studying DSA, backend fundamentals &amp; security in parallel with client work</li>
+            <li>Working toward launching my own IT services company</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-no">§ No. 003</div>
+        <h2 class="sec-title">What I build</h2>
+        <p class="sec-sub">Four kinds of work, all aimed at the same thing: less manual admin, more business running itself.</p>
+      </div>
+
+      <div class="services reveal">
+        <div class="service-row">
+          <div class="service-no">01</div>
+          <div class="service-name">Business websites</div>
+          <div class="service-desc">Storefronts, landing pages and dashboards designed around how the business actually operates — not a generic template.</div>
+        </div>
+        <div class="service-row">
+          <div class="service-no">02</div>
+          <div class="service-name">E-commerce &amp; payments</div>
+          <div class="service-desc">Full online ordering with Razorpay integration, order management, and secure JWT-based logins for customers and staff.</div>
+        </div>
+        <div class="service-row">
+          <div class="service-no">03</div>
+          <div class="service-name">Admin &amp; automation</div>
+          <div class="service-desc">Dashboards that replace registers and WhatsApp order-taking — inventory, attendance, bookings, reporting, done automatically.</div>
+        </div>
+        <div class="service-row">
+          <div class="service-no">04</div>
+          <div class="service-name">Custom tools &amp; AI features</div>
+          <div class="service-desc">Purpose-built tools — from QR attendance systems to AI-assisted features — for problems off-the-shelf software doesn't solve.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-no">§ No. 004</div>
+        <h2 class="sec-title">Client ledger</h2>
+        <p class="sec-sub">A running record of what's shipped — each entry a real business, not a demo.</p>
+      </div>
+
+      <div class="entries reveal">
+
+        <div class="entry" style="display:flex; flex-direction:column; align-items:flex-start; gap:10px;">
+          <div class="entry-id">Entry No. 01</div>
+          <div class="entry-title" style="margin-left:20px;">Ledger open — next entry pending</div>
+          <div class="entry-desc" style="margin-top:0;">This is where each client project will be logged — client name, scope, stack, and status. Ready to add your next one whenever you are.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-no">§ No. 005</div>
+        <h2 class="sec-title">Stack</h2>
+      </div>
+      <div class="skill-groups reveal">
+        <div class="skill-group">
+          <h4>Frontend</h4>
+          <div class="tags">
+            <span class="tag">HTML</span><span class="tag">JavaScript</span><span class="tag">CSS</span><span class="tag">Tailwind CSS</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Backend</h4>
+          <div class="tags">
+            <span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">Gemini API</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Tools &amp; integrations</h4>
+          <div class="tags">
+            <span class="tag">VS CODE</span><span class="tag">qwen AI</span><span class="tag">Git / GitHub</span><span class="tag">vercel</span><span class="tag">Gemini API</span><span class="tag">Godaddy</span><span class="tag">claude AI</span>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap contact-inner">
+      <div>
+        <div class="sec-no reveal">§ No. 006</div>
+        <h2 class="sec-title reveal">Let's talk business.</h2>
+        <p class="sec-sub reveal">Tell me what the business needs to run better — a new website, online payments, or the admin work you're still doing by hand. I'll tell you honestly what's worth building first.</p>
+        <div class="contact-list reveal">
+          <div class="contact-row"><span>Email</span><a href="mailto:youremail@example.com">dhruvjoshi1401@gmail.com</a></div>
+          <div class="contact-row"><span>Phone / WhatsApp</span><a href="tel:+910000000000">+91 9824633029</a></div>
+          <div class="contact-row"><span>Location</span><span>Bhavnagar, Gujarat, India</span></div>
+          <div class="contact-row"><span>GitHub</span><a href="#">Dhruv1401-joshi</a></div>
+        <!---  <div class="contact-row"><span>LinkedIn</span><a href="#">linkedin.com/in/yourusername</a></div>  -->
+        </div>
+      </div>
+      <div class="sign-box reveal">
+        <h4>New project?</h4>
+        <p>Send a short brief — what the business does, and what's slowing it down. I'll reply with next steps and a timeline, no obligation.</p>
+        <a href="mailto:youremail@example.com" class="btn btn-primary" style="width:100%; text-align:center;">Email your brief</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-row">
+    <span>© 2026 Dhruv. Built &amp; deployed from Bhavnagar.</span>
+    <span>No. 007 — End of ledger</span>
+  </div>
+</footer>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
